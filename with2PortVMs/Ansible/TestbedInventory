@@ -36,7 +36,6 @@ NTNU_host
 
 # Router list:
 [testbed_rtrs]
-NTNU
 NEU
 MICHIGAN
 UIUC
