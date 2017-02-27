@@ -1,0 +1,44 @@
+# if you use quotes in this file, setup_conf.py will most likely break
+#  because it parses the file looking for quotes. It is this way so
+#  that this file can be sourced by bash scripts and used to generate
+#  configuration files. Also, you could improve the python to make this
+#  not an issue if it bothers you
+
+# the format here is [router name]:[site name]:[host alias]:[router ip]:[{neighbor router name}: for each neighbor]
+
+# [site name abbreviation]
+# :[site extension]
+# :[router extension]
+# :[host alias]
+# :[router ip]
+# :[{neighbor site name abbreviation}: for each neighbor]
+
+ROUTER_CONFIG=( "csu:edu/colostate:mccoy:h15x2:129.82.138.48:ua:remap:ucla:byu:uiuc:mich:kisti"
+                "byu:edu/byu:pastal0:h13x1:128.187.81.12:remap:ua:csu"
+                "ucla:edu/ucla:cs/spurs:h11x1:131.179.196.46:caida:uci:remap:csu:pku"
+                "remap:edu/ucla/remap:cs/aleph:h9x1:128.97.98.7:uci:ucla:ua:byu:csu"
+                "uci:edu/uci:ndnhub:h7x1:128.195.4.36:caida:ucla:remap"
+                "caida:org/caida:click:h5x1:192.172.226.248:ua:uci:ucla:tongji"
+                "ua:edu/arizona:hobo:h3x1:128.196.203.36:um:wu:csu:byu:remap:caida:waseda"
+
+                "wu:edu/wustl:wundngw:h28x1:128.252.153.194:ua:um:uiuc:verisign:urjc"
+                "uiuc:edu/illinois:ndnx:h30x1:72.36.112.82:wu:csu:mich:padua"
+                "mich:edu/umich:ndn0:h27x1:141.212.108.18:verisign:um:uiuc:csu:neu:lip6"
+                "neu:edu/neu:ndnrtr:h25x2:129.10.52.193:um:mich:ntnu:pku"
+                "verisign:com/verisign:labs-ndn3:h23x2:72.13.58.118:um:wu:mich"
+                "um:edu/memphis:titan:h21x1:141.225.11.173:ua:wu:mich:neu:verisign:orange"
+
+                "lip6:fr/lip6:ndnhub:h49x1:132.227.62.163:urjc:systemx:orange:basel:ntnu:mich"
+                "ntnu:no/ntnu:ndnnode:h51x2:129.241.208.115:lip6:systemx:basel:neu:pku"
+                "systemx:fr/irt-systemx:systemx-ndn-1:h57x1:137.194.54.81:orange:lip6:ntnu:basel"
+                "basel:ch/unibas:cs-ndn-testbed1:h55x2:192.43.193.111:padua:urjc:orange:lip6:systemx:ntnu:pku"
+                "orange:com/orange:orange-ndn-1:h53x2:161.105.195.18:urjc:padua:basel:systemx:lip6:um:waseda"
+                "padua:it/unipd:ndnnode:h47x1:147.162.114.18:urjc:orange:basel:uiuc"
+                "urjc:es/urjc:insula:h44x1:193.147.51.186:lip6:orange:basel:padua:wu"
+
+                "tongji:cn/edu/tongji:cnlab:h32x1:202.120.188.176:bupt:pku:anyang:waseda:caida"
+                "waseda:jp/waseda:parklab:h34x1:133.9.73.66:tongji:kisti:bupt:orange:anyang:ua"
+                "kisti:kr/re/kisti:router3:h36x1:203.253.235.168:bupt:anyang:waseda:csu"
+                "anyang:kr/anyang:anyanghub:h38x1:210.114.89.49:pku:bupt:tongji:kisti:waseda"
+                "bupt:cn/edu/bupt:bupthub:h42x2:114.247.165.44:pku:tongji:anyang:kisti:waseda"
+                "pku:cn/edu/pku:pkuhub:h43x2:162.105.146.26:bupt:tongji:ucla:neu:anyang:ntnu:basel")

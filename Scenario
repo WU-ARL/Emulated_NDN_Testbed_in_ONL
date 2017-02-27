@@ -1,0 +1,24 @@
+
+Load ICN_Demo_Topo_with_batch_delays into the RLI
+Reserve
+Commit
+
+Once RLI is done:
+in an onlusr window:
+> cd Emulated_NDN_Testbed_in_ONL/configuration
+> ./runAll.sh
+
+Once that is done:
+cd Emulated_NDN_Testbed_in_ONL/Demo_Files
+./populateVMs.sh <vm password>
+
+./runTrafficServer.sh <vm password> &
+./runTrafficClient.sh <vm password> &
+
+Check monitoring windows to make sure you see adequate traffic.
+
+Then:
+
+cd Emulated_NDN_Testbed_in_ONL/Demo_Files
+./flipFlopNlsr.sh
+

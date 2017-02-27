@@ -99,7 +99,7 @@ CLIENT: nfdstat_c
   onlusr>  ./startDataCollectionScripts.sh /ndn
 
   # scriptslist_2 contains only ipPing.py
-  wu_host> ./build/nfdstat_s -f linkList.testbed -n 66 -k scriptslist_2
+  wu_host> ./build/nfdstat_s -x -f linksList -n 132 -k scriptslist_2
 
 ## ICN DEMO
 
