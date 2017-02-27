@@ -1,0 +1,4 @@
+---
+# tasks file for user
+- name: user remove client.conf if it is there
+  file: path=~/.ndn/client.conf state=absent
