@@ -1,5 +1,6 @@
 # Hosts list:
 [testbed_hosts]
+PKUSZ_host
 NEU_host
 MICHIGAN_host
 UIUC_host
@@ -36,6 +37,7 @@ NTNU_host
 
 # Router list:
 [testbed_rtrs]
+PKUSZ
 NEU
 MICHIGAN
 UIUC
