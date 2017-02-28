@@ -1,10 +1,6 @@
 ---
-- name: configure ndn hosts
-  hosts: testbed_hosts
-
 - name: configure ndn routers
   hosts: testbed_rtrs
-
   roles:
   - {role: 'routing', tags: 'routing'}  # to use the tag, use this option: --tags "routing"
   - {role: 'NOC', tags: 'NOC'}  # to use the tag, use this option: --tags "NOC"
@@ -16,3 +12,11 @@
   #- nlsr
   #- ndnping
   - {role: 'user', tags: 'user'}
+
+- name: configure ndn hosts
+  hosts: testbed_hosts
+  roles:
+  - {role: 'user', tags: 'user'}
+  - {role: 'nfd_host', tags: 'nfd_host'}  # to use the tag, use this option: --tags "nfd_host"
+
+

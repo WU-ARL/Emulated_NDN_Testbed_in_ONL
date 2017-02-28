@@ -1,2 +1,20 @@
 ---
 # tasks file for nfd_host
+- script: roles/nfd_host/files/config.sh
+  become: yes
+
+- name: create nfd.conf
+  template: src=nfd.conf.j2 dest=/usr/local/etc/ndn/nfd.conf owner=root group=root mode="u=rw,g=r,o=r"
+  become: yes
+
+- name: create nfdStart.sh
+  #template: src=nfdStart.sh.j2 dest=/tmp/nfdStart.sh owner=root group=root mode="u=rwx,g=rx,o=rx"
+  template: src=nfdStart.sh.j2 dest=/tmp/nfdStart.sh mode="u=rwx,g=rx,o=rx"
+  #become: yes
+
+- name: run /tmp/nfdStart.sh script
+  command: /tmp/nfdStart.sh
+  #become: yes
+  #sudo: yes
+  #ignore_errors: yes
+

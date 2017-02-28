@@ -23,6 +23,10 @@ do
   echo "ansible_user: ${USER}" >> ./host_vars/$h
   echo "ansible_ssh_pass: ${pw}" >> ./host_vars/$h
   echo "ansible_sudo_pass: ${pw}" >> ./host_vars/$h
+  DATA_IP_DATA1=`sshpass -p${pw} ssh ${!h} "ifconfig data1 | grep \"inet addr\" | cut -d ':' -f 2 | cut -d ' ' -f 1 "`
+  baseIp=`echo $DATA_IP_DATA1 | cut -d '.' -f 1-3`
+  ndn_rtr_address=$baseIp".1"
+  echo "ndn_rtr_address: ${ndn_rtr_address}" >> ./host_vars/$h
   echo "$h" >> ./TestbedInventory
 done
 
