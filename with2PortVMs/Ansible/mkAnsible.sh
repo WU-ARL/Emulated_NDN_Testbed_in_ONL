@@ -33,6 +33,7 @@ done
 echo "" >> ./TestbedInventory
 echo "# Router list:" >> ./TestbedInventory
 echo "[testbed_rtrs]" >> ./TestbedInventory
+echo "#!/bin/bash" > roles/user/files/pingAll.sh
 for r in $RTRS
 do
   RTR_DATA_IP_DATA1=`sshpass -p${pw} ssh ${!r} "ifconfig data1 | grep \"inet addr\" | cut -d ':' -f 2 | cut -d ' ' -f 1 "`
@@ -56,6 +57,8 @@ do
   echo "ansible_ssh_pass: ${pw}" >> ./host_vars/$r
   echo "ansible_sudo_pass: ${pw}" >> ./host_vars/$r
   echo "$r" >> ./TestbedInventory
+  PREFIX=`grep default_prefix: base_host_vars/${r} | cut -d ':' -f 2`
+  echo "ndnping -c 5 $PREFIX" >> roles/user/files/pingAll.sh
 done
 
 echo "[all:vars]" >> ./TestbedInventory
