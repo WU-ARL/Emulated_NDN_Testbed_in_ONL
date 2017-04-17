@@ -1,0 +1,5 @@
+---
+# handlers file for ndnping
+- name: restart ndnping
+  service: name=ndnping state=restarted
+  become: yes

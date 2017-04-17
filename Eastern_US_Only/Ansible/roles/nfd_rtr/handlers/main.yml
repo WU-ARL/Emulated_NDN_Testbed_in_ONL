@@ -1,0 +1,17 @@
+---
+# handlers file for nfd_rtr
+#- name: restart nfd
+#  command: nfd-stop
+#  become: yes
+#  notify: start nfd
+#  ignore_errors: yes
+#
+#- name: start nfd
+#  command: nfd-start
+#  become: yes
+#  ignore_errors: yes
+
+- name: restart nfd
+  service: name=nfd state=restarted
+  become: yes
+

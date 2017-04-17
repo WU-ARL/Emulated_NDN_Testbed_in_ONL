@@ -1,0 +1,18 @@
+HOSTS="NEU_host MICHIGAN_host UIUC_host WU_host MEMPHIS_host NIST_host "
+RTRS="NEU MICHIGAN UIUC WU MEMPHIS NIST "
+
+NEU_host=${h1x2}
+NEU=${VM64bit_2port1}
+MICHIGAN_host=${h2x2}
+MICHIGAN=${VM64bit_2port2}
+UIUC_host=${h3x2}
+UIUC=${VM64bit_2port3}
+WU_host=${h4x2}
+WU=${VM64bit_2port4}
+MEMPHIS_host=${h5x2}
+MEMPHIS=${VM64bit_2port5}
+NIST_host=${h6x2}
+NIST=${VM64bit_2port6}
+CSU_host=${h7x2}
+CSU=${VM64bit_2port7}
+

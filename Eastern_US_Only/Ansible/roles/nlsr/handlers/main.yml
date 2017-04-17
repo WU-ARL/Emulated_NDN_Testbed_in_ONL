@@ -1,0 +1,19 @@
+---
+# handlers file for nlsr
+#- name: restart nlsr
+#  command: killall nlsr
+#  become: yes
+#  become_user: nlsr
+#  notify: start nlsr
+#  ignore_errors: yes
+#
+#- name: start nlsr
+#  command: /usr/local/bin/nlsr -f /usr/local/etc/ndn/nlsr/nlsr.conf
+#  become: yes
+#  become_user: nlsr
+#  ignore_errors: yes
+
+- name: restart nlsr
+  service: name=nlsr state=restarted
+  become: yes
+
