@@ -9,10 +9,7 @@
   - {role: 'ndnsec', tags: 'ndnsec'}  # to use the tag, use this option: --tags "ndnsec"
   - {role: 'nlsr', tags: 'nlsr'}  # to use the tag, use this option: --tags "nlsr"
   - {role: 'ndnping', tags: 'ndnping'}  # to use the tag, use this option: --tags "ndnping"
-  #- routing
-  #- nfd_rtr
-  #- nlsr
-  #- ndnping
+  - {role: 'repo-ng', tags: 'repo-ng'}  # to use the tag, use this option: --tags "repo-ng"
   - {role: 'user', tags: 'user'}
 
 - name: configure ndn hosts
