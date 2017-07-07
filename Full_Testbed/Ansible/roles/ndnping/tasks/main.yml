@@ -1,0 +1,21 @@
+---
+# tasks file for ndnping
+#- name: install ndnping
+#  apt: name=ndnping state=latest update_cache=yes
+
+- name: create ndnping directories
+  file: path=/usr/local/etc/default state=directory owner=root group=root mode=0755
+  become: yes
+
+- name: create /usr/local/etc/default/ndnping
+  template: src=ndnping.j2 dest=/usr/local/etc/default/ndnping  owner=root group=root mode="u=rw,g=r,o=r"
+  notify: restart ndnping
+  become: yes
+
+- name: copy ndnping /etc/init conf file
+  copy: dest=/etc/init/ndnping.conf  src=roles/ndnping/files/etc_init_ndnping.conf owner=root group=root mode=0644
+  become: yes
+
+- name: start ndnping
+  service: name=ndnping state=started enabled=yes
+  become: yes

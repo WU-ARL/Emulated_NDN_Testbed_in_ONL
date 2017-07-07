@@ -1,0 +1,23 @@
+
+Ansible for Emulated NDN Testbed on ONL.
+
+https://github.com/WU-ARL/Emulated_NDN_Testbed_in_ONL
+
+RLI topology file: Emulated_NDN_Testbed_in_ONL/with2PortVMs/ICN_Demo_Topo_2017_FEB_2port_VMs
+
+On your laptop, run the RLI and File/Open the topology file.
+Make a reservation.
+Commit
+
+Once the Commit is successfully completed, you can configure and run the ansible playbook.
+You will need the VM password from the RLI. It can be found with the Topology/Show VM Password
+menu item.
+
+To run, cd into this directory Emulated_NDN_Testbed_in_ONL/with2PortVMs/Ansible, 
+then run:
+
+> ./mkAnsible.sh <vm password>
+> ansible-playbook -i TestbedInventory testbed.yml
+
+
+

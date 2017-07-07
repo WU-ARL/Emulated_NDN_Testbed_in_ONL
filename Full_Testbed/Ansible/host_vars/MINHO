@@ -1,0 +1,22 @@
+---
+
+# file: host_vars/MINHO
+#ansible_host: vnetlab.gcom.di.uminho.pt
+site: /pt/uminho
+default_prefix: /ndn/pt/uminho 
+advertised_prefixes: [/ndn/pt/uminho]
+router_name: vnetlab 
+neighbors: 
+  COPELABS: {link_cost: 4}
+  BASEL: {link_cost: 23}
+  URJC: {link_cost: 13}
+  PADUA: {link_cost: 26}
+network_regions: [/ndn/pt/uminho]
+hr_radius: 16.2060358549513
+hr_angle: 2.62082874954162
+#cert_url: http://ndncert.named-data.net/cert/get/?name=%2Fndn%2FKEY%2Fpt%2Fuminho%2Fksk-1458247661374%2FID-CERT%2F%25FD%2500%2500%2501S%2586n%25F6%25F0
+ndn_ip_addr: 192.168.58.2
+ansible_host: vm12c10v01
+ansible_user: jdd
+ansible_ssh_pass: llvdh
+ansible_sudo_pass: llvdh

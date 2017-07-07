@@ -1,0 +1,26 @@
+Email from  Peter:
+hi John,
+
+I’ve been checking that I got all the required files together in one package so that you can start experimenting with the binary.
+Few notes,
+
+-- since the binary is dependent on several shared libraries, I placed them in the archive. All you need to do - is to copy them to /usr/lib/x86_64-linux-gnu/
+  -- make sure that there are no missing dependencies, one can do that by executing command “$ ldd ndnrtc-client” - this will show whether all shared dependencies resolved
+- there are two sample videos (.argb) files
+- there are two sample config files for headless app - sample-producer.cfg and sample-consumer.cfg; in param.cfg one can a sample structure of a config file with additional comments
+- in order to support verification, one has to provide config policy file, it’s included - rule.conf; this file relies on file-based certificate as a trust anchor, so make sure you dumped certificate in a file ($ ndnsec-dump <cert-name> > signing.cert)
+- to start client, execute the following command:
+
+$ ./ndnrtc-client -c sample-producer.cfg -p rule.conf -t 30 -s <signing identity name>
+
+this will run producer configured from sample-producer.cfg for 30 seconds;
+likewise,
+
+$ ./ndnrtc-client -c sample-consumer.cfg -p rule.conf -t 30 -s <signing identity name>
+
+will run a consumer for 30 seconds. You should be able to see consumer logs and statistics files in /tmp directory.
+
+I might’ve missed something here, so please let me know if you have questions. For efficiency, might want to setup a quick call and I’ll walk you over the whole setup process and help troubleshooting.
+
+Thanks, 
+

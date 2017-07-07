@@ -1,0 +1,23 @@
+---
+
+# file: host_vars/REMAP
+#ansible_host: 128.97.98.7
+site: /edu/ucla
+default_prefix: /ndn/edu/ucla/remap 
+advertised_prefixes: [/ndn/edu/ucla/remap]
+router_name: cs/aleph 
+neighbors:
+  BYU: {link_cost: 9}
+  UCLA: {link_cost: 1}
+  CSU: {link_cost: 16}
+  ARIZONA: {link_cost: 25}
+  UCI: {link_cost: 1}
+network_regions: [/ndn/edu/ucla/remap]
+hr_radius: 16.5866430024476
+hr_angle: 2.9991100000
+#cert_url: http://ndncert.named-data.net/cert/get/?name=%2Fndn%2FKEY%2Fedu%2Fucla%2Fremap%2Fksk-1413220102898%2FID-CERT%2F%25FD%2500%2500%2501SO%2596%25925
+ndn_ip_addr: 192.168.43.2
+ansible_host: vm12c04v04
+ansible_user: jdd
+ansible_ssh_pass: llvdh
+ansible_sudo_pass: llvdh

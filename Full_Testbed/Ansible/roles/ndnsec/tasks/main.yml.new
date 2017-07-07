@@ -1,0 +1,113 @@
+---
+# tasks file for ndnsec
+
+- name: add ndnsec user
+  user: name=ndnsec state=present shell=/bin/bash password=LrVkOUM1s16xE
+
+# Check that there is a default name and that default_prefix == default name on node
+# if not, try to change default name to default_prefix
+- script: roles/ndnsec/files/checkNameExists.sh "{{ default_prefix }}"
+  register: name_present
+  ignore_errors: yes
+
+- script: roles/ndnsec/files/checkName.sh "{{ default_prefix }}"
+  register: name_agrees
+  ignore_errors: yes
+
+- debug:
+    msg: "Found default name agrees with default_prefix: {{ default_prefix }}"
+  when: name_agrees.rc == 0
+
+- debug:
+    msg: "Found default name does NOT agree with default_prefix: {{ default_prefix }}"
+  when: name_agrees.rc != 0
+
+- script: roles/ndnsec/files/setDefaultName.sh "{{ default_prefix }}"
+  when: name_agrees.rc != 0
+  register: name_present2
+  ignore_errors: yes
+
+- debug:
+    msg: "Tried setting default name. Default name still does NOT agree with default_prefix: {{ default_prefix }}"
+  when: name_present2 is defined and (name_present2.rc != 0)
+
+- script: roles/ndnsec/files/checkKey.sh "{{ default_prefix }}"
+  register: key_present
+  #when: name_present.rc == 0
+  ignore_errors: yes
+
+- debug:
+    msg: "Found key exists for default_prefix: {{ default_prefix }}"
+  when: key_present is defined and (key_present.rc == 0)
+
+- debug:
+    msg: "Found key does NOT exists for default_prefix: {{ default_prefix }}"
+  when: key_present is not defined or (key_present is defined and (key_present.rc != 0))
+
+# generateKey.sh puts signing request in /home/ndnsec/cert-request.txt
+- script: roles/ndnsec/files/generateKey.sh "{{ default_prefix }}"
+  when: key_present is not defined or key_present.rc != 0
+  ignore_errors: yes
+
+# fetch unsigned cert request back to here
+- fetch: 
+  src: /home/ndnsec/cert-request.txt
+  dest: roles/ndnsec/files/ANSIBLE_{{ inventory_hostname }}_cert-request.txt
+  flat: yes
+
+# copy unsigned cert request to UCLA
+- copy: srce={{ item }} dest=/home/ndnsec/ owner=ndnsec group=ndnsec mode=644
+  with_fileglob:
+    - roles/ndnsec/files/*cert-request.txt
+  when: inventory_hostname == "UCLA"
+  become: yes
+
+- script: roles/ndnsec/files/checkKey.sh "{{ default_prefix }}"
+  register: key_present2
+  when: key_present is not defined or key_present.rc != 0
+  ignore_errors: yes
+
+- debug:
+    msg: "Tried generating key, must have faild. Found key does NOT exists for default_prefix: {{ default_prefix }}"
+  when: key_present2 is defined and (key_present2.rc != 0)
+
+- script: roles/ndnsec/files/checkCert.sh "{{ default_prefix }}"
+  register: cert_present
+  when: ((key_present is defined and key_present.rc == 0) or (key_present2 is defined and key_present2.rc == 0))
+  ignore_errors: yes
+
+- debug:
+    msg: "Found cert exists for default_prefix: {{ default_prefix }}"
+  when: cert_present is defined and (cert_present.rc == 0)
+
+- debug:
+    msg: "Found cert does NOT exist for default_prefix: {{ default_prefix }}"
+  when: cert_present is defined and (cert_present.rc != 0)
+
+- script: roles/ndnsec/files/checkForValidCert.sh "{{ default_prefix }}"
+  register: cert_valid
+  when: cert_present is defined and (cert_present.rc == 0)
+  ignore_errors: yes
+
+- debug:
+    msg: "Found VALID cert exists for default_prefix: {{ default_prefix }}"
+  when: cert_valid is defined and (cert_valid.rc == 0)
+
+- debug:
+    msg: "Found valid cert does NOT exist for default_prefix: {{ default_prefix }}"
+  when: cert_valid is defined and (cert_valid.rc != 0)
+
+#- script: roles/ndnsec/files/installCert.sh "{{ cert_url }}"  "{{ default_prefix }}"
+#  when: (cert_present.rc != 0 or (cert_valid is defined and (cert_valid.rc != 0 ))) and (cert_url is defined)
+
+
+# check that there is a key defined for default name
+# if not, generate a key for default_prefix (that will then need to be used to generate a cert by human action)
+
+# check that there is a cert defined for default name
+# if not, if there is a URL variable defined for cert, then install it.
+
+# check that cert for default name is still valid
+# if not, if there is a URL variable defined for cert, then re-install it and check validity again
+
+# So, it looks like there are just two variables involved. default_prefix and cert_url

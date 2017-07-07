@@ -1,0 +1,16 @@
+copy ndnrtc.tgz from ONL to vm
+unpack ndnrtc.tgz
+install two libraries:
+sudo cp libconfig++.so.9  /usr/lib/x86_64-linux-gnu/
+sudo cp libndn-cpp.so.0 /usr/lib/x86_64-linux-gnu/
+
+configure producer and consumer cfg files.
+
+
+create signing id and cert
+ndnsec-key-gen /ndn/edu/wustl/jdd >& cert.request
+ndnsec-cert-gen -s /ndn/edu/wustl/jdd -N /ndn/edu/wustl/jdd cert.request  > cert
+ndnsec-cert-dump -i /ndn/edu/wustl/jdd > signing.cert
+
+
+
