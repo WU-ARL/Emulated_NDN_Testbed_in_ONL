@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#create signing id and cert on WU host
+ndnsec-key-gen {{ default_prefix }}/jdd >& cert.request
+ndnsec-cert-gen -s {{ default_prefix }}/jdd -N {{ default_prefix }}/jdd cert.request  > cert
+ndnsec-cert-dump -i {{ default_prefix }}/jdd > signing.cert
+
+
+

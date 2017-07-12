@@ -1,0 +1,42 @@
+---
+# tasks file for ndnrtc
+- name: create ndnrtc directory
+  file: path=/home/jdd/ndnrtc state=directory owner=jdd group=jdd mode=755
+
+# mk directory ndnrtc in home dir of Hosts
+# files to copy over to all hosts: libconfig++.so.9  libndn-cpp.so.0  ndnrtc-client  rule.conf  setupHost.sh  
+# files to copy over to producer host (WU): test-source-320x240.argb.tar.gz  wu-producer.cfg
+
+
+- name: copy libconfig
+  copy: dest=/usr/lib/x86_64-linux-gnu/libconfig++.so.9 src=roles/ndnrtc/files/libconfig++.so.9 owner=root group=root mode=644
+  become: yes
+
+- name: copy libndn-cpp
+  copy: dest=/usr/lib/x86_64-linux-gnu/libndn-cpp.so.0 src=roles/ndnrtc/files/libndn-cpp.so.0  owner=root group=root mode=644
+  become: yes
+
+- name: copy ndnrtc-client
+  copy: dest=/home/jdd/ndnrtc/ndnrtc-client  src=roles/ndnrtc/files/ndnrtc-client  owner=jdd group=jdd mode=755
+
+- name: copy rule.conf
+  copy: dest=/home/jdd/ndnrtc/rule.conf  src=roles/ndnrtc/files/rule.conf  owner=jdd group=jdd mode=644
+
+- name: copy setupHost.sh
+  copy: dest=/home/jdd/ndnrtc/setupHost.sh  src=roles/ndnrtc/files/setupHost.sh  owner=jdd group=jdd mode=755
+
+- name: copy test-source-320x240.argb.tar.gz
+  copy: dest=/home/jdd/ndnrtc/test-source-320x240.argb.tar.gz src=roles/ndnrtc/files/test-source-320x240.argb.tar.gz owner=jdd group=jdd mode=644
+  when: inventory_hostname == "WU_host"
+
+- name: copy wu-producer.cfg
+  copy: dest=/home/jdd/ndnrtc/wu-producer.cfg  src=roles/ndnrtc/files/wu-producer.cfg  owner=jdd group=jdd mode=644
+  when: inventory_hostname == "WU_host"
+
+- name: create certHost.sh
+  template: src=certHost.sh.j2 dest=/home/jdd/ndnrtc/certHost.sh owner=jdd group=jdd mode=755
+
+- name: create consumer-of-wu.cfg
+  template: src=consumer-of-wu.cfg.j2 dest=/home/jdd/ndnrtc/consumer-of-wu.cfg owner=jdd group=jdd mode=644
+
+
