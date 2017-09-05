@@ -18,11 +18,10 @@ neighbors:
   URJC: {link_cost: 14}
 network_regions: [/ndn/ch/unibas]
 hr_radius: 13.2717666496574
-#hr_angle: 2.41932700603969
-hr_angle: 2.41932
+hr_angle: 2.41932700603969
 #cert_url: http://ndncert.named-data.net/cert/get/?name=%2Fndn%2FKEY%2Fch%2Funibas%2Fksk-1457396430480%2FID-CERT%2F%25FD%2500%2500%2501Sv%25D9%259Bg
 ndn_ip_addr: 192.168.61.2
-ansible_host: vm12c12v02
+ansible_host: vm12c09v01
 ansible_user: jdd
-ansible_ssh_pass: rtkbm
-ansible_sudo_pass: rtkbm
+ansible_ssh_pass: rslzr
+ansible_sudo_pass: rslzr

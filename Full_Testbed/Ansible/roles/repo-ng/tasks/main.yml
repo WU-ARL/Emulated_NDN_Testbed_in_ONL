@@ -4,9 +4,9 @@
 #  apt: name=repo-ng state=latest update_cache=yes
 
 - name: create repo-ng configuration file
-  template: src=repo-ng.conf.j2 dest=/etc/ndn/repo-ng.conf owner=root group=root mode="u=rw,g=r,o=r"
-  notify: restart repo-ng
+  template: src=repo-ng.conf.j2 dest=/usr/local/etc/ndn/repo-ng.conf owner=root group=root mode="u=rw,g=r,o=r"
+#  notify: restart repo-ng
 
-- name: start repo-ng
-  service: name=repo-ng state=started enabled=yes
+#- name: start repo-ng
+#  service: name=repo-ng state=started enabled=yes
 
