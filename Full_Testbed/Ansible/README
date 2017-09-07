@@ -3,7 +3,9 @@ Ansible for Emulated NDN Testbed on ONL.
 
 https://github.com/WU-ARL/Emulated_NDN_Testbed_in_ONL
 
-RLI topology file: Emulated_NDN_Testbed_in_ONL/with2PortVMs/ICN_Demo_Topo_2017_FEB_2port_VMs
+RLI topology file: Emulated_NDN_Testbed_in_ONL/Full_Testbed/Full_Testbed.onl
+
+copy RLI topology file to your laptop
 
 On your laptop, run the RLI and File/Open the topology file.
 Make a reservation.
