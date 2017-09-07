@@ -1,0 +1,5 @@
+ansible_host: pc2core40
+ansible_user: jdd
+ansible_ssh_pass: fiahe
+ansible_sudo_pass: fiahe
+ndn_rtr_address: 192.168.33.1
