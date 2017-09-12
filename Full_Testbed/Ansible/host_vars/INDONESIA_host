@@ -1,5 +1,0 @@
-ansible_host: vm12c09v02
-ansible_user: jdd
-ansible_ssh_pass: mitiz
-ansible_sudo_pass: mitiz
-ndn_rtr_address: 192.168.19.1
