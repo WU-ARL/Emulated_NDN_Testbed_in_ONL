@@ -6,8 +6,12 @@ sleep 5
 nfd-start >& /dev/null
 #nfd-start >& /tmp/nfd-start.log
 sleep 5
-nfdc register / udp://{{ndn_rtr_address}}
-nfdc register /localhop/nfd udp4://{{ndn_rtr_address}}
+#nfdc register / udp://{{ndn_rtr_address}}
+#nfdc register /localhop/nfd udp4://{{ndn_rtr_address}}
+
+nfdc face create udp://{{ndn_rtr_address}}
+nfdc route add / udp://{{ndn_rtr_address}}
+nfdc route add /localhop/nfd udp4://{{ndn_rtr_address}}
 
 #sleep 5
 
