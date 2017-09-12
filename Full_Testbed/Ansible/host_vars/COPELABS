@@ -19,5 +19,5 @@ hr_angle: 2.62082874954162
 ndn_ip_addr: 192.168.57.2
 ansible_host: vm12c06v03
 ansible_user: jdd
-ansible_ssh_pass: fiahe
-ansible_sudo_pass: fiahe
+ansible_ssh_pass: mitiz
+ansible_sudo_pass: mitiz

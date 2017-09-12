@@ -1,5 +1,5 @@
-ansible_host: pc2core32
+ansible_host: vm12c06v04
 ansible_user: jdd
-ansible_ssh_pass: fiahe
-ansible_sudo_pass: fiahe
+ansible_ssh_pass: mitiz
+ansible_sudo_pass: mitiz
 ndn_rtr_address: 192.168.17.1

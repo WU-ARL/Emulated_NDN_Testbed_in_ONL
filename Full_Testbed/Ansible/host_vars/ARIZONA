@@ -19,7 +19,7 @@ hr_radius: 16.2305391313912
 hr_angle: 2.97033285094067
 #cert_url: http://ndncert.named-data.net/cert/get/?name=%2Fndn%2FKEY%2Fedu%2Farizona%2Fksk-1413218886898%2FID-CERT%2F%25FD%2500%2500%2501SO%2596H%251D
 ndn_ip_addr: 192.168.46.2
-ansible_host: vm12c03v04
+ansible_host: vm12c10v02
 ansible_user: jdd
-ansible_ssh_pass: fiahe
-ansible_sudo_pass: fiahe
+ansible_ssh_pass: mitiz
+ansible_sudo_pass: mitiz
