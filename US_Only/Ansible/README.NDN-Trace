@@ -1,0 +1,25 @@
+
+To test NDN-Trace on the Emulated Testbed US-Only.
+
+  ./mkAnsible.sh <vm password>
+  ansible-playbook -i TestbedInventory testbed.yml
+
+ Then log in to each of the 13 ndn gateway VMs.
+
+ onlusr> source .topology
+ onlusr> ssh $VM64bit_2port1
+ ... 1-13
+ onlusr> ssh $VM64bit_2port13
+
+
+Then on each gateway run the trace-daemon:
+su - user
+cd ~/0.5.1.73.NDN-Trace/ndn-cxx/build/examples
+./trace_daemon >& /tmp/trace_daemon &
+
+Then on a gateway you want to test on run a trace:
+
+cd ~/0.5.1.73.NDN-Trace/ndn-cxx/build/examples
+./trace_client -t 30 -s -p -n /ndn/edu/ucla/ping/11111
+
+
