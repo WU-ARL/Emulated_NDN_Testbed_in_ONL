@@ -14,3 +14,7 @@ Each example contains its own ONL RLI topology file and Ansible configuration fi
 Full_Testbed/Full_Testbed.onl
 
 More description and documentation is coming soon.
+
+Note: Some of these ONL topologies use a hardware type that is not built into the RLI.
+      You may need to copy the files in ONL.HW.Files into your ~/.onldir directory
+      to get the topologies to load.
