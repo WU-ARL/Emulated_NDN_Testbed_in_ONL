@@ -1,0 +1,54 @@
+---
+# tasks file for nfd_rtr
+- name: add ndn user
+  user: name=ndn state=present shell=/bin/false createhome=no
+  become: yes
+
+- name: make ndn required directories
+  file: path=/usr/local/etc/ndn state=directory owner=ndn group=ndn mode=0755
+  become: yes
+- file: path=/usr/local/etc/ndn/keys state=directory owner=ndn group=ndn mode=0755
+  become: yes
+- file: path=/usr/local/var/run state=directory owner=ndn group=ndn mode=0755
+  become: yes
+- file: path=/usr/local/var/lib/ndn state=directory owner=ndn group=ndn mode=0755
+  become: yes
+- file: path=/usr/local/var/log/ndn state=directory owner=ndn group=ndn mode=0755
+  become: yes
+
+#- cron: name="log rotate" user="ndnops" hour="1" minute="1" job="/home/ndnops/ndn-ops/NOC/logRotation/rotateLogs.sh  "
+
+#- name: install nfd
+#  apt: name=nfd state=latest update_cache=yes
+
+- name: copy nfd /etc/init conf file
+  copy: dest=/etc/init/nfd.conf  src=roles/nfd_rtr/files/etc_init_nfd.conf owner=root group=root mode=0644
+  become: yes
+
+- name: copy root key
+  copy: dest=/usr/local/etc/ndn/keys/ndn-testbed-root.ndncert.base64 src=roles/nfd_rtr/files/ndn-testbed-root.ndncert.base64 owner=root group=root mode=0644
+  become: yes
+
+- name: create nfd.conf
+  template: src=nfd.conf.j2 dest=/usr/local/etc/ndn/nfd.conf owner=root group=root mode="u=rw,g=r,o=r"
+  notify: restart nfd
+  become: yes
+
+- name: create nfd-init.sh
+  template: src=nfd-init.sh.j2 dest=/usr/local/etc/ndn/nfd-init.sh  owner=root group=root mode="u=rwx,g=rx,o=rx"
+  notify: restart nfd
+  become: yes
+
+- name: start nfd
+  service: name=nfd state=started enabled=yes
+  become: yes
+
+#- name: start nfd
+#  command: nfd-start
+#  become: yes
+#  ignore_errors: yes
+##  become_user: ndn
+
+## restart nfd immediately, don't wait for end of playbook
+#- meta: flush_handlers
+

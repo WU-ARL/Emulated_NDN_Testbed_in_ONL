@@ -1,0 +1,5 @@
+---
+# tasks file for routing
+
+- script: roles/routing/files/defaultRoute.sh 
+  become: yes

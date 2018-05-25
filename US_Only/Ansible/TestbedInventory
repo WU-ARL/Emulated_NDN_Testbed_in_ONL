@@ -1,0 +1,37 @@
+# Hosts list:
+[testbed_hosts]
+MICHIGAN_host
+UIUC_host
+WU_host
+MEMPHIS_host
+NIST_host
+CSU_host
+BYU_host
+UCLA_host
+REMAP_host
+UCI_host
+CAIDA_host
+ARIZONA_host
+
+# Router list:
+[testbed_rtrs]
+NEU
+MICHIGAN
+UIUC
+WU
+MEMPHIS
+NIST
+CSU
+BYU
+UCLA
+REMAP
+UCI
+CAIDA
+ARIZONA
+[all:vars]
+ndnNetwork=/ndn
+hyperbolic_state=on
+tcp_port=6363
+udp_port=6363
+multicast_port=56363
+

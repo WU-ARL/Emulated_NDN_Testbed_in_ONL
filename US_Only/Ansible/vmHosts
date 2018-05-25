@@ -1,0 +1,30 @@
+HOSTS="MICHIGAN_host UIUC_host WU_host MEMPHIS_host NIST_host CSU_host BYU_host UCLA_host REMAP_host UCI_host CAIDA_host ARIZONA_host "
+RTRS="NEU MICHIGAN UIUC WU MEMPHIS NIST CSU BYU UCLA REMAP UCI CAIDA ARIZONA "
+
+NEU_host=${h1x2}
+NEU=${VM64bit_2port1}
+MICHIGAN_host=${h2x2}
+MICHIGAN=${VM64bit_2port2}
+UIUC_host=${h3x2}
+UIUC=${VM64bit_2port3}
+WU_host=${h4x2}
+WU=${VM64bit_2port4}
+MEMPHIS_host=${h5x2}
+MEMPHIS=${VM64bit_2port5}
+NIST_host=${h6x2}
+NIST=${VM64bit_2port6}
+CSU_host=${h7x2}
+CSU=${VM64bit_2port7}
+BYU_host=${h8x2}
+BYU=${VM64bit_2port8}
+UCLA_host=${h9x2}
+UCLA=${VM64bit_2port9}
+REMAP_host=${h10x2}
+REMAP=${VM64bit_2port10}
+UCI_host=${h11x2}
+UCI=${VM64bit_2port11}
+CAIDA_host=${h12x2}
+CAIDA=${VM64bit_2port12}
+ARIZONA_host=${h13x2}
+ARIZONA=${VM64bit_2port13}
+
