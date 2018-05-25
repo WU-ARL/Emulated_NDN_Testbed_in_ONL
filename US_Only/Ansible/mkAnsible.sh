@@ -22,6 +22,7 @@ source ./vmHosts
 #
 #exit 
 
+mkdir -p host_vars
 echo "# Hosts list:" > ./TestbedInventory
 echo "[testbed_hosts]" >> ./TestbedInventory
 for h in $HOSTS
