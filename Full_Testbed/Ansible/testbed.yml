@@ -6,7 +6,7 @@
   - {role: 'routing', tags: 'routing'}  # to use the tag, use this option: --tags "routing"
 #  - {role: 'NOC', tags: 'NOC'}  # to use the tag, use this option: --tags "NOC"
   - {role: 'nfd_rtr', tags: 'nfd_rtr'}  # to use the tag, use this option: --tags "nfd_rtr"
-  - {role: 'ndnsec', tags: 'ndnsec'}  # to use the tag, use this option: --tags "ndnsec"
+#  - {role: 'ndnsec', tags: 'ndnsec'}  # to use the tag, use this option: --tags "ndnsec"
   - {role: 'nlsr', tags: 'nlsr'}  # to use the tag, use this option: --tags "nlsr"
   - {role: 'ndnping', tags: 'ndnping'}  # to use the tag, use this option: --tags "ndnping"
   - {role: 'repo-ng', tags: 'repo-ng'}  # to use the tag, use this option: --tags "repo-ng"
