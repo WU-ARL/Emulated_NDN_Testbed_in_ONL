@@ -3,7 +3,7 @@ Ansible for Emulated NDN Testbed on ONL.
 
 https://github.com/WU-ARL/Emulated_NDN_Testbed_in_ONL
 
-RLI topology file: Emulated_NDN_Testbed_in_ONL/Full_Testbed/Full_Testbed.onl
+RLI topology file: Emulated_NDN_Testbed_in_ONL/US_Only_Testbed/US_Only_Testbed.onl
 
 copy RLI topology file to your laptop
 
@@ -15,11 +15,14 @@ Once the Commit is successfully completed, you can configure and run the ansible
 You will need the VM password from the RLI. It can be found with the Topology/Show VM Password
 menu item.
 
-To run, cd into this directory Emulated_NDN_Testbed_in_ONL/Full_Testbed/Ansible
+To run, cd into this directory Emulated_NDN_Testbed_in_ONL/US_Only_Testbed/Ansible
 then run:
 
 > ./mkAnsible.sh <vm password>
 > ansible-playbook -i TestbedInventory testbed.yml
 
+At this point you should then have a working NDN Testbed.
+You can log in to host h1x2 and successfully run a command like this:
 
+ndnping /ndn/edu/wustl
 
